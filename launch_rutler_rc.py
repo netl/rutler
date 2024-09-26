@@ -12,10 +12,20 @@ def generate_launch_description():
                 {"current_scale":-0.0097},
                 {"current_offset":13.527}
             ],
+            remappings=[
+                ('/rover/channel_1', '/rover/accelerator'),
+                ('/rover/channel_2', '/rover/steering'),
+                ('/rover/channel_3', '/rover/tilt'),
+                ('/rover/channel_4', '/rover/pan'),
+            ],
         ),
         Node(
             package='rutler',
             executable='pt_gimbal',
+            remappings=[
+                ('/rover/channel_3', '/rover/tilt'),
+                ('/rover/channel_4', '/rover/pan'),
+            ],
         ),
         Node(
             package='rutler',
