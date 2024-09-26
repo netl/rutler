@@ -8,8 +8,8 @@ class panTilt(Node):
     def __init__(self):
         super().__init__('pan_tilt')
         self.sub = self.create_subscription(PoseStamped, 'pt_camera', self.handlePose, 10)
-        self.panPublisher = self.create_publisher(Float32, 'crawler/channel_2', 10)
-        self.tiltPublisher = self.create_publisher(Float32, 'crawler/channel_3', 10)
+        self.panPublisher = self.create_publisher(Float32, 'rover/channel_3', 10)
+        self.tiltPublisher = self.create_publisher(Float32, 'rover/channel_4', 10)
 
     def handlePose(self, msg):
         q = msg.pose.orientation
