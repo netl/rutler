@@ -32,6 +32,10 @@ def generate_launch_description():
             executable='joystick_rutler',
         ),
         Node(
+            package='rutler',
+            executable='face_finder',
+        ),
+        Node(
             package='joy',
             executable='joy_node',
         ),
