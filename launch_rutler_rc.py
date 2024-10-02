@@ -7,7 +7,7 @@ def generate_launch_description():
             package='can_rover',
             executable='can_rover',
             parameters=[
-                {"voltage_scale":0.0045},
+                {"voltage_scale":0.00455},
                 {"voltage_offset":0.0},
                 {"current_scale":-0.0097},
                 {"current_offset":13.527}
