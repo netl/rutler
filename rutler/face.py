@@ -50,6 +50,7 @@ class faceFinder(Node):
             if distance < nearest[2]:
                 nearest = (int(cx), int(cy), int(distance))
 
+        p = PoseStamped()
         if len(faces)>0:
             cv2.line(img, center, nearest[:2], (0,0,255), 3)
 
@@ -58,13 +59,13 @@ class faceFinder(Node):
             tilt = 1.5*(center[1]-nearest[1])/height
 
             # send pose
-            p = PoseStamped()
             result = quaternion_from_euler(pan,tilt,0)
             p.pose.orientation.x = result[0]
             p.pose.orientation.y = result[1]
             p.pose.orientation.z = result[2]
             p.pose.orientation.w = result[3]
-            self.lookAt.publish(p)
+
+        self.lookAt.publish(p)
 
         # debug
         imageMessage = self.br.cv2_to_imgmsg(img)
