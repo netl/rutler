@@ -20,19 +20,26 @@ class faceFinder(Node):
 
         self.br = CvBridge()
 
+        self.declare_parameter('frame_rate', 5)
+        self.nextFrame = 0
 
     def processFrame(self,data):
+
+        #limit frame rate
         t = time.time()
+        if t-self.nextFrame < 0: 
+            return
+        self.nextFrame = t + 1/self.get_parameter(f"frame_rate").get_parameter_value().integer_value
         
         # get frame
         img = self.br.imgmsg_to_cv2(data)
-        height, width = img.shape[:2]
 
         # get faces
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = self.face_cascade.detectMultiScale(gray, 1.3, 5)
 
         # find nearest to center of view
+        height, width = img.shape[:2]
         center = (int(width/2),int(height/2))
         nearest = (center[0], center[1], 100000) 
         for (x,y,w,h) in faces:
@@ -47,8 +54,8 @@ class faceFinder(Node):
             cv2.line(img, center, nearest[:2], (0,0,255), 3)
 
             # calculate view offset
-            pan = 0.1*(center[0]-nearest[0])/width
-            tilt = 0.1*(center[1]-nearest[1])/height
+            pan = 2*(center[0]-nearest[0])/width
+            tilt = 1.5*(center[1]-nearest[1])/height
 
             # send pose
             p = PoseStamped()
@@ -62,7 +69,6 @@ class faceFinder(Node):
         # debug
         imageMessage = self.br.cv2_to_imgmsg(img)
         self.outImage.publish(imageMessage)
-        t = time.time()-t
 
 def main(args=None):
     rclpy.init(args=args)
