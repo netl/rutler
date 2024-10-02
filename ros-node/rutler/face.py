@@ -14,7 +14,7 @@ class faceFinder(Node):
         # https://github.com/Itseez/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
         self.face_cascade = cv2.CascadeClassifier('/home/netl/ros2_ws/src/rutler/resource/haarcascade_frontalface_default.xml')
 
-        self.sub = self.create_subscription(Image, '/image_raw', self.processFrame,10)
+        self.sub = self.create_subscription(Image, '/image', self.processFrame,10)
         self.lookAt = self.create_publisher(PoseStamped, '/look_at', 10)
         self.outImage = self.create_publisher(Image, '/image_debug', 10)
 
@@ -30,6 +30,7 @@ class faceFinder(Node):
         if t-self.nextFrame < 0: 
             return
         self.nextFrame = t + 1/self.get_parameter(f"frame_rate").get_parameter_value().integer_value
+
         
         # get frame
         img = self.br.imgmsg_to_cv2(data)

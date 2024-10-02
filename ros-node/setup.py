@@ -23,6 +23,7 @@ setup(
             'pt_gimbal = rutler.pt_gimbal:main',
             'joystick_rutler = rutler.joystick_rutler:main',
             'face_finder = rutler.face:main',
+            'photography = rutler.photography:main',
         ],
     },
 )
