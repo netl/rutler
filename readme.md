@@ -1,3 +1,4 @@
+![rutler](images/rutler.png)
 # parts list
 * [rc-car](https://www.hobbylinna.fi/fi/product/ftx-outback-2-ranger-4x4-rtr-1:10-trail-crawler-ftx5586/FTX5586)
     * [battery](https://github.com/netl/rover-bms)
