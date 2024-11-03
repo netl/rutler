@@ -31,6 +31,10 @@ def generate_launch_description():
         Node(
             package='rutler',
             executable='joystick_rutler',
+            remappings=[
+                ('/accelerator', '/rover/accelerator'),
+                ('/steering', '/rover/steering'),
+            ],
         ),
         Node(
             package='rutler',
