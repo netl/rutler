@@ -30,11 +30,16 @@
         * compass
         * gyro
         * [gps](https://docs.px4.io/main/en/gps_compass/gps_holybro_m8n_m9n.html)
-        * [lidar](https://www.slamtec.com/en/C1)
+        * [lidar](#lidar)
         * [link cable](#link-cable)
     * [estop](https://www.aliexpress.com/item/32676446818.html)
     * charge port?
         * cv + cc?
+# modules
+## lidar
+* [github](https://github.com/Slamtec/sllidar_ros2)
+* [lidar](https://www.slamtec.com/en/C1)
+* `ros2 launch sllidar_ros2 view_sllidar_c1_launch.py`
 
 # custom hardware
 
@@ -63,3 +68,7 @@ JST XH4 ~10 cm
 [can-rover]:https://github.com/netl/can-rover
 [esc]:https://www.aliexpress.com/item/1005005866547271.html
 [camera]:https://www.aliexpress.com/item/1005004647231020.html
+
+# setup fixes
+* `/usr/lib/python3/dist-packages/setuptools/command/develop.py:40: EasyInstallDeprecationWarning: easy_install command is deprecated.`
+    * `pip install setuptools==58.2.0 --break-system-packages`
