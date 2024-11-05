@@ -10,7 +10,10 @@ def generate_launch_description():
                 {"voltage_scale":0.00455},
                 {"voltage_offset":0.0},
                 {"current_scale":-0.0097},
-                {"current_offset":13.5509}
+                {"current_offset":13.5509},
+                {"channel_1_scale":700},
+                {"channel_2_scale":300},
+                {"channel_2_offset":1416},
             ],
             remappings=[
                 ('/rover/channel_1', '/rover/accelerator'),
