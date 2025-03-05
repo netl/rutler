@@ -69,6 +69,16 @@ JST XH4 ~10 cm
 [esc]:https://www.aliexpress.com/item/1005005866547271.html
 [camera]:https://www.aliexpress.com/item/1005004647231020.html
 
+# setup
+```
+sudo apt install can-utils
+sudo cp can.network /etc/systemd/network/
+sudo systemctl start systemd-networkd
+sudo systemctl enable systemd-networkd
+docker build -t rutler .
+docker run -d --network=host --restart=always rutler
+```
+
 # setup fixes
 * `/usr/lib/python3/dist-packages/setuptools/command/develop.py:40: EasyInstallDeprecationWarning: easy_install command is deprecated.`
     * `pip install setuptools==58.2.0 --break-system-packages`

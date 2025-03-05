@@ -1,0 +1,3 @@
+[submodule "can-rover"]
+	path = can-rover
+	url = https://github.com/netl/can-rover.git
