@@ -12,7 +12,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', package_name, 'launch'), glob('launch/*')),
+        (os.path.join('share', package_name), glob('launch/*')),
         (os.path.join('share', package_name), glob('urdf/*')),
     ],
     install_requires=['setuptools'],
@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
             'pt_gimbal = rutler.pt_gimbal:main',
             'joystick_rutler = rutler.joystick_rutler:main',
+            'twist_rover = rutler.twist_rover:main',
             'face_finder = rutler.face:main',
             'photography = rutler.photography:main',
             'state_publisher = rutler.state_publisher:main',

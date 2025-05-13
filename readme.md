@@ -75,7 +75,7 @@ sudo apt install can-utils
 sudo cp can.network /etc/systemd/network/
 sudo systemctl start systemd-networkd
 sudo systemctl enable systemd-networkd
-docker build -t rutler .
+docker build --no-cache -t rutler .
 docker run -d --network=host --device=/dev/ttyUSB0 --restart=always rutler
 ```
 

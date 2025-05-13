@@ -8,7 +8,6 @@ RUN apt update && apt install -y git vim python3-rosdep python3-colcon-common-ex
 RUN mkdir src
 COPY can-rover/ros2_can_rover src/can_rover 
 COPY ros-node ./src/rutler
-COPY launch_rutler_rc.py ./
 
 #rplidar
 COPY sllidar_ros2 ./src/sllidar_ros2
@@ -23,4 +22,4 @@ RUN rosdep update
 RUN rosdep install --from-paths src -y --ignore-src
 
 #run ros2 with launch file
-CMD source /opt/ros/jazzy/setup.bash; source install/setup.bash; ros2 launch launch_rutler_rc.py & ros2 launch sllidar_ros2 sllidar_c1_launch.py
+CMD source /opt/ros/jazzy/setup.bash; source install/setup.bash; ros2 launch build/rutler/launch/launch_rutler_core.py
